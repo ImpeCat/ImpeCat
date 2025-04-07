@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colección Gaming - Impresiones 3D Exclusivas</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#D4AF37", secondary: "#F5F5F5" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333333;
+      }
+      h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      }
+      input:focus {
+      outline: none;
+      }
+      .nav-link {
+      position: relative;
+      }
+      .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: #D4AF37;
+      transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+      width: 100%;
+      }
+      .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .price-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background: #e5e7eb;
+      border-radius: 5px;
+      outline: none;
+      }
+      .price-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      }
+      .price-slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      }
+      .custom-checkbox {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .custom-checkbox + label {
+      position: relative;
+      padding-left: 30px;
+      cursor: pointer;
+      display: inline-block;
+      }
+      .custom-checkbox + label:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #D4AF37;
+      background: #fff;
+      border-radius: 4px;
+      }
+      .custom-checkbox:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 4px;
+      width: 6px;
+      height: 12px;
+      border: solid #D4AF37;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+      .custom-select {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      }
+      .custom-select select {
+      display: none;
+      }
+      .select-selected {
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      }
+      .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      right: 15px;
+      width: 8px;
+      height: 8px;
+      border: solid #D4AF37;
+      border-width: 0 2px 2px 0;
+      transform: translateY(-50%) rotate(45deg);
+      }
+      .select-items {
+      position: absolute;
+      background-color: white;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin-top: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      }
+      .select-hide {
+      display: none;
+      }
+      .select-items div {
+      padding: 10px 15px;
+      cursor: pointer;
+      }
+      .select-items div:hover {
+      background-color: rgba(212, 175, 55, 0.1);
+      }
+      .switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+      }
+      .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e5e7eb;
+      transition: .4s;
+      border-radius: 24px;
+      }
+      .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .slider {
+      background-color: #D4AF37;
+      }
+      input:checked + .slider:before {
+      transform: translateX(24px);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navegación -->
+    <nav class="bg-secondary py-4 px-6 sticky top-0 z-50 shadow-sm">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="w-1/3 flex justify-start">
+          <div class="w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line ri-lg"></i>
+          </div>
+        </div>
+        <div class="w-1/3 flex justify-center">
+          <h1 class="font-['Pacifico'] text-2xl text-primary">logo</h1>
+        </div>
+        <div class="w-1/3 flex justify-end">
+          <div class="w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-instagram-line ri-lg"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Menú de categorías -->
+    <div class="bg-white border-b border-gray-100">
+      <div class="container mx-auto px-6 py-3">
+        <ul class="flex justify-center space-x-8">
+          <li>
+            <a
+              href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a9294c57-fbcf-414b-a4a8-a7ed577d4430"
+              data-readdy="true"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Llaveros</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="nav-link text-primary font-medium transition-colors"
+              >Gaming</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/d5a803dd-fef4-493a-b7e2-9d7f681e5724"
+              data-readdy="true"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Figuras</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Bustos</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="nav-link text-gray-700 hover:text-primary transition-colors"
+              >Personalizados</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Breadcrumbs -->
+    <div class="bg-white py-3 border-b border-gray-100">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center text-sm text-gray-500">
+          <a
+            href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a4e4cd11-5c82-4c99-874a-b9e3b2855213"
+            data-readdy="true"
+            class="hover:text-primary transition-colors"
+            >Inicio</a
+          >
+          <div class="w-4 h-4 flex items-center justify-center mx-2">
+            <i class="ri-arrow-right-s-line"></i>
+          </div>
+          <span class="text-primary">Colección Gaming</span>
+        </div>
+      </div>
+    </div>
+    <!-- Encabezado de la colección -->
+    <div class="bg-secondary py-8">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div>
+            <h1 class="text-4xl font-bold mb-2">Colección Gaming</h1>
+            <p class="text-gray-600">
+              Accesorios y figuras 3D para los amantes de los videojuegos
+            </p>
+          </div>
+          <a
+            href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a9294c57-fbcf-414b-a4a8-a7ed577d4430"
+            data-readdy="true"
+            class="flex items-center text-primary mt-4 md:mt-0 hover:underline"
+          >
+            <div class="w-5 h-5 flex items-center justify-center mr-1">
+              <i class="ri-arrow-left-line"></i>
+            </div>
+            Volver a la tienda
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Filtros y Productos -->
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar con filtros -->
+        <div class="lg:w-1/4">
+          <div
+            class="bg-white border border-gray-200 rounded p-6 sticky top-24"
+          >
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Buscar</h3>
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="Buscar productos gaming..."
+                  class="w-full px-4 py-2 pr-10 border border-gray-300 rounded focus:border-primary text-sm"
+                />
+                <div
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400"
+                >
+                  <i class="ri-search-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Ordenar por</h3>
+              <div class="custom-select">
+                <div class="select-selected px-4 py-2 text-sm cursor-pointer">
+                  Popularidad
+                </div>
+                <div class="select-items select-hide">
+                  <div class="text-sm">Popularidad</div>
+                  <div class="text-sm">Precio: más bajo a más alto</div>
+                  <div class="text-sm">Precio: más alto a más bajo</div>
+                  <div class="text-sm">Más nuevos</div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Precio</h3>
+              <div class="flex justify-between mb-2 text-sm">
+                <span>€15</span>
+                <span>€80</span>
+              </div>
+              <input
+                type="range"
+                min="15"
+                max="80"
+                value="40"
+                class="price-slider mb-4"
+              />
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600"
+                  >Hasta:
+                  <span class="text-primary font-medium">€40</span></span
+                >
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Tipo de Producto</h3>
+              <div class="space-y-3">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="soportes"
+                    class="custom-checkbox"
+                    checked
+                  />
+                  <label for="soportes" class="text-sm">Soportes (15)</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="figuras" class="custom-checkbox" />
+                  <label for="figuras" class="text-sm">Figuras (12)</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="organizadores"
+                    class="custom-checkbox"
+                  />
+                  <label for="organizadores" class="text-sm"
+                    >Organizadores (8)</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="accesorios"
+                    class="custom-checkbox"
+                  />
+                  <label for="accesorios" class="text-sm"
+                    >Accesorios (10)</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Consola</h3>
+              <div class="space-y-3">
+                <div>
+                  <input
+                    type="checkbox"
+                    id="playstation"
+                    class="custom-checkbox"
+                    checked
+                  />
+                  <label for="playstation" class="text-sm"
+                    >PlayStation (14)</label
+                  >
+                </div>
+                <div>
+                  <input type="checkbox" id="xbox" class="custom-checkbox" />
+                  <label for="xbox" class="text-sm">Xbox (12)</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="nintendo"
+                    class="custom-checkbox"
+                  />
+                  <label for="nintendo" class="text-sm">Nintendo (9)</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pc" class="custom-checkbox" />
+                  <label for="pc" class="text-sm">PC (7)</label>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Saga/Juego</h3>
+              <div class="space-y-3">
+                <div>
+                  <input type="checkbox" id="zelda" class="custom-checkbox" />
+                  <label for="zelda" class="text-sm"
+                    >The Legend of Zelda (6)</label
+                  >
+                </div>
+                <div>
+                  <input type="checkbox" id="mario" class="custom-checkbox" />
+                  <label for="mario" class="text-sm">Super Mario (5)</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pokemon" class="custom-checkbox" />
+                  <label for="pokemon" class="text-sm">Pokémon (8)</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="minecraft"
+                    class="custom-checkbox"
+                    checked
+                  />
+                  <label for="minecraft" class="text-sm">Minecraft (4)</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="fortnite"
+                    class="custom-checkbox"
+                  />
+                  <label for="fortnite" class="text-sm">Fortnite (3)</label>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Material</h3>
+              <div class="space-y-3">
+                <div>
+                  <input type="checkbox" id="pla" class="custom-checkbox" />
+                  <label for="pla" class="text-sm">PLA (18)</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="abs" class="custom-checkbox" />
+                  <label for="abs" class="text-sm">ABS (12)</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="petg"
+                    class="custom-checkbox"
+                    checked
+                  />
+                  <label for="petg" class="text-sm">PETG (10)</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="resina" class="custom-checkbox" />
+                  <label for="resina" class="text-sm">Resina (8)</label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Disponibilidad</h3>
+              <div class="flex items-center justify-between">
+                <span class="text-sm">Solo productos en stock</span>
+                <label class="switch">
+                  <input type="checkbox" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Productos -->
+        <div class="lg:w-3/4">
+          <!-- Barra de herramientas -->
+          <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 bg-white p-4 border border-gray-200 rounded"
+          >
+            <div class="text-sm text-gray-600 mb-4 sm:mb-0">
+              Mostrando <span class="font-medium">24</span> de
+              <span class="font-medium">42</span> productos
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="flex items-center">
+                <span class="text-sm mr-2">Vista:</span>
+                <button
+                  class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded"
+                >
+                  <i class="ri-grid-line"></i>
+                </button>
+                <button
+                  class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary rounded ml-1"
+                >
+                  <i class="ri-list-check-2"></i>
+                </button>
+              </div>
+              <div class="hidden sm:flex items-center">
+                <span class="text-sm mr-2">Mostrar:</span>
+                <div class="custom-select w-20">
+                  <div class="select-selected px-3 py-1 text-sm cursor-pointer">
+                    24
+                  </div>
+                  <div class="select-items select-hide">
+                    <div class="text-sm">12</div>
+                    <div class="text-sm">24</div>
+                    <div class="text-sm">36</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Grid de productos -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Producto 1 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/c5e3f7a9b2c1d4e6f8a0b3c5d7e9f1a2.jpg"
+                  alt="Soporte para Mando PS5 con Carga"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded"
+                >
+                  Nuevo
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Soporte para Mando PS5 con Carga
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Soporte elegante con espacio para cable de carga. Compatible
+                  con mandos DualSense.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€24,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 2 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6.jpg"
+                  alt="Soporte de Pared para Mando Xbox"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Soporte de Pared para Mando Xbox
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Montaje en pared para mandos de Xbox. Incluye tornillos y
+                  tacos para fácil instalación.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€19,50</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 3 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/q7w8e9r0t1y2u3i4o5p6a7s8d9f0g1h2.jpg"
+                  alt="Organizador Nintendo Switch"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded"
+                >
+                  Bestseller
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Organizador Nintendo Switch
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Base para consola con espacio para 12 cartuchos de juegos y
+                  accesorios.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€29,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 4 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/j3k4l5z6x7c8v9b0n1m2q3w4e5r6t7.jpg"
+                  alt="Organizador Escritorio Minecraft"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Organizador Escritorio Minecraft
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Organizador temático con porta lápices y compartimentos para
+                  accesorios gaming.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€22,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 5 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/y8u9i0o1p2a3s4d5f6g7h8j9k0l1z2.jpg"
+                  alt="Soporte para Auriculares RGB"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Soporte para Auriculares RGB
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Soporte con tira LED RGB integrada. Cable USB incluido para
+                  alimentación.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€34,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 6 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/x2c3v4b5n6m7q8w9e0r1t2y3u4i5o6p7.jpg"
+                  alt="Organizador de Cables PlayStation"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded"
+                >
+                  Personalizable
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Organizador de Cables PlayStation
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Organizador con diseño inspirado en PlayStation. Mantén tus
+                  cables ordenados.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€18,50</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 7 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/a9s8d7f6g5h4j3k2l1z0x9c8v7b6n5m4.jpg"
+                  alt="Soporte Espada Maestra Zelda"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Soporte Espada Maestra Zelda
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Soporte para réplicas de la Espada Maestra. Diseño inspirado
+                  en el Pedestal del Tiempo.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€26,50</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 8 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5h6.jpg"
+                  alt="Sistema Gestión de Cables Gaming"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Sistema Gestión de Cables Gaming
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Conjunto de clips y guías para mantener ordenados los cables
+                  de tu setup gaming.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€16,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 9 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/j7k8l9z0x1c2v3b4n5m6q7w8e9r0t1y2.jpg"
+                  alt="Soporte Pokeball para Móvil y Mando"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded"
+                >
+                  Oferta
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Soporte Pokeball para Móvil y Mando
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Soporte con diseño de Pokeball. Perfecto para fans de Pokémon.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <div>
+                    <span class="text-gray-400 line-through text-sm mr-2"
+                      >€24,95</span
+                    >
+                    <span class="text-primary font-semibold">€19,95</span>
+                  </div>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 10 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/u3i4o5p6a7s8d9f0g1h2j3k4l5z6x7c8.jpg"
+                  alt="Reposamuñecas para Teclado Gaming"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Reposamuñecas para Teclado Gaming
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Diseño ergonómico para largas sesiones de juego. Material
+                  suave al tacto y antideslizante.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€21,50</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 11 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/v9b0n1m2q3w4e5r6t7y8u9i0o1p2a3s4.jpg"
+                  alt="Figura Creeper Minecraft"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Figura Creeper Minecraft
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Figura decorativa de Creeper con acabados detallados. Altura:
+                  15 cm.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€19,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 12 -->
+            <div
+              class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://public.readdy.ai/ai/img_res/d5f6g7h8j9k0l1z2x3c4v5b6n7m8q9w0.jpg"
+                  alt="Lámpara Mando de Consola"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded"
+                >
+                  Personalizable
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1">
+                  Lámpara Mando de Consola
+                </h3>
+                <p class="text-gray-600 text-sm mb-2 line-clamp-2">
+                  Lámpara con forma de mando. Personalizable con el logo de tu
+                  consola favorita.
+                </p>
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-primary font-semibold">€32,95</span>
+                  <button
+                    class="bg-primary text-white px-3 py-1 !rounded-button text-sm hover:bg-opacity-90 transition-all whitespace-nowrap"
+                  >
+                    Ver detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Paginación -->
+          <div class="mt-12 flex justify-center">
+            <div class="flex items-center space-x-2">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded hover:border-primary hover:text-primary transition-colors"
+              >
+                <i class="ri-arrow-left-s-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded"
+                >1</a
+              >
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded hover:border-primary hover:text-primary transition-colors"
+                >2</a
+              >
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded hover:border-primary hover:text-primary transition-colors"
+                >3</a
+              >
+              <span class="w-10 h-10 flex items-center justify-center"
+                >...</span
+              >
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded hover:border-primary hover:text-primary transition-colors"
+                >5</a
+              >
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded hover:border-primary hover:text-primary transition-colors"
+              >
+                <i class="ri-arrow-right-s-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Productos relacionados -->
+    <section class="bg-secondary py-12">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8">También te puede interesar</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Producto relacionado 1 -->
+          <div
+            class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/e1r2t3y4u5i6o7p8a9s0d1f2g3.jpg"
+                alt="Llaveros Gaming"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-1">Llaveros Gaming</h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-primary font-semibold">€16,95</span>
+                <a
+                  href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a9294c57-fbcf-414b-a4a8-a7ed577d4430"
+                  data-readdy="true"
+                  class="text-primary text-sm hover:underline"
+                  >Ver más</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Producto relacionado 2 -->
+          <div
+            class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/h4j5k6l7z8x9c0v1b2n3m4q5w6e7r8.jpg"
+                alt="Decoración Pared Gaming"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-1">
+                Decoración Pared Gaming
+              </h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-primary font-semibold">€28,50</span>
+                <a href="#" class="text-primary text-sm hover:underline"
+                  >Ver más</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Producto relacionado 3 -->
+          <div
+            class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/t9y0u1i2o3p4a5s6d7f8g9h0j1k2l3.jpg"
+                alt="Trofeos Personalizados Gaming"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-1">
+                Trofeos Personalizados Gaming
+              </h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-primary font-semibold">€39,95</span>
+                <a href="#" class="text-primary text-sm hover:underline"
+                  >Ver más</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Producto relacionado 4 -->
+          <div
+            class="product-card bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="https://public.readdy.ai/ai/img_res/z4x5c6v7b8n9m0q1w2e3r4t5y6u7i8o9.jpg"
+                alt="Set de Posavasos Gaming"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold mb-1">
+                Set de Posavasos Gaming
+              </h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-primary font-semibold">€22,50</span>
+                <a href="#" class="text-primary text-sm hover:underline"
+                  >Ver más</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Botón volver arriba -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        id="back-to-top"
+        class="w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300"
+      >
+        <i class="ri-arrow-up-line ri-lg"></i>
+      </button>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h1 class="font-['Pacifico'] text-2xl text-primary mb-4">logo</h1>
+            <p class="text-gray-400 mb-6">
+              Creaciones 3D personalizadas con diseños exclusivos y acabados de
+              alta calidad.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-primary hover:bg-primary hover:text-white transition-colors"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-primary hover:bg-primary hover:text-white transition-colors"
+              >
+                <i class="ri-facebook-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-primary hover:bg-primary hover:text-white transition-colors"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2"
+            >
+              Categorías
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a9294c57-fbcf-414b-a4a8-a7ed577d4430"
+                  data-readdy="true"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Llaveros</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Gaming</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/d5a803dd-fef4-493a-b7e2-9d7f681e5724"
+                  data-readdy="true"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Figuras</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Bustos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Personalizados</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2"
+            >
+              Enlaces
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://readdy.ai/home/6d80bec2-d3c0-46ef-9796-406ab6e18488/a4e4cd11-5c82-4c99-874a-b9e3b2855213"
+                  data-readdy="true"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Galería</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Proceso</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Testimonios</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition-colors"
+                  >Contacto</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3
+              class="text-lg font-semibold mb-4 border-b border-gray-700 pb-2"
+            >
+              Newsletter
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Suscríbete para recibir novedades y ofertas exclusivas.
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Tu email"
+                class="px-4 py-2 bg-gray-800 text-white border-none rounded-l focus:outline-none w-full"
+              />
+              <button
+                class="bg-primary text-white px-4 py-2 !rounded-button rounded-r hover:bg-opacity-90 transition-all whitespace-nowrap"
+              >
+                Suscribir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2025 Impresiones 3D Exclusivas. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-4 mt-4 md:mt-0">
+            <a
+              href="#"
+              class="text-gray-400 text-sm hover:text-primary transition-colors"
+              >Política de Privacidad</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 text-sm hover:text-primary transition-colors"
+              >Términos y Condiciones</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Selector personalizado
+      document.addEventListener("DOMContentLoaded", function () {
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        x = document.getElementsByClassName("custom-select");
+        l = x.length;
+        for (i = 0; i < l; i++) {
+          selElmnt = x[i].getElementsByTagName("select")[0];
+          ll = selElmnt ? selElmnt.length : 0;
+          a = document.createElement("DIV");
+          a.setAttribute("class", "select-selected");
+          a.innerHTML = x[i].querySelector(".select-selected").innerHTML;
+          x[i].appendChild(a);
+          b = document.createElement("DIV");
+          b.setAttribute("class", "select-items select-hide");
+          let items = x[i].querySelectorAll(".select-items div");
+          for (j = 0; j < items.length; j++) {
+            c = document.createElement("DIV");
+            c.innerHTML = items[j].innerHTML;
+            c.addEventListener("click", function (e) {
+              var y, i, k, s, h, sl, yl;
+              s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+              sl = s ? s.length : 0;
+              h = this.parentNode.previousSibling;
+              h.innerHTML = this.innerHTML;
+              this.parentNode.previousSibling.click();
+            });
+            b.appendChild(c);
+          }
+          x[i].appendChild(b);
+          a.addEventListener("click", function (e) {
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+          });
+        }
+        function closeAllSelect(elmnt) {
+          var x,
+            y,
+            i,
+            xl,
+            yl,
+            arrNo = [];
+          x = document.getElementsByClassName("select-items");
+          y = document.getElementsByClassName("select-selected");
+          xl = x.length;
+          yl = y.length;
+          for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+              arrNo.push(i);
+            } else {
+              y[i].classList.remove("select-arrow-active");
+            }
+          }
+          for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+              x[i].classList.add("select-hide");
+            }
+          }
+        }
+        document.addEventListener("click", closeAllSelect);
+        // Slider de precio
+        const priceSlider = document.querySelector(".price-slider");
+        if (priceSlider) {
+          priceSlider.addEventListener("input", function () {
+            const value = this.value;
+            const priceDisplay = document.querySelector(".text-primary.font-medium");
+            if (priceDisplay) {
+              priceDisplay.textContent = "€" + value;
+            }
+          });
+        }
+        // Botón volver arriba
+        const backToTopButton = document.getElementById("back-to-top");
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.add("opacity-0", "invisible");
+            backToTopButton.classList.remove("opacity-100", "visible");
+          }
+        });
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
